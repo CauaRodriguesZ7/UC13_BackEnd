@@ -1,7 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 
 const app: Application = express();  // Tipando 'app' como 'Application'
-const PORT: number = 1313;  // Tipagem da porta como número
+const PORT: number = 3333;  // Tipagem da porta como número
 
 // Middleware para permitir que o Express interprete JSON
 app.use(express.json());
