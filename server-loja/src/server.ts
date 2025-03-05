@@ -1,16 +1,8 @@
-import { Application } from "express";
+import express, { Application } from "express";
+import produtoRoutes from "./routes/ProdutoRoutes"
 
-class Produto {
-    private id: number;
-    private nome: string;
-    private preco: number;
+const app: Application = express();
+app.use(express.json());
 
-    constructor (id: number, nome: string, preco: number) {
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
-    }
-}
-
-let produtos: Produto[] = [];
+app.use("/api", router);
 
