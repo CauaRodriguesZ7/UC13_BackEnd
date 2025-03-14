@@ -1,18 +1,31 @@
 import { Personagem } from "./Personagem";
 import { Item } from "./Item";
+import { Braithwaite } from "./Braithwaite";
+import { Status } from "./status";
 
 export class ArthurMorgan extends Personagem {
   private arma: Item = new Item("Revólver", 1);
   private municao: Item = new Item("Munição", 3);
+  private olhosDaMorte: number;
+
+  constructor(nome: string, vida: number, status: Status, olhosDaMorte: number) {
+    super(nome, vida, status); // construtor da classe mãe;
+    this.olhosDaMorte = olhosDaMorte; // Atributo exclusivo da classe
+  };
 
   private podeAtirar(): boolean {
     return this.municao.getQuantidade() > 0;
   };
 
-  public atirar(): void {
-    if ( this.podeAtirar()){
-      this.municao.setQuantidade( this.municao.getQuantidade() - 1);
-      this.olhosDaMorte++;
+  protected aumentarXP(): void {
+    this.olhosDaMorte++;
+  }
+
+  public atirar(Inimigo: Braithwaite): void {
+    if ( this.podeAtirar() ){
+      this.getMunicao().setQuantidade(this.getMunicao().getQuantidade() - 1);
+      this.aumentarXP;
+      Inimigo.sofrerDano();
     };
   };
 
@@ -21,7 +34,11 @@ export class ArthurMorgan extends Personagem {
   };
 
   public getArma(): Item {
-    return this.arma
+    return this.arma;
   }
-  
+
+  public getOlhosDaMorte(): number {
+    return this.olhosDaMorte;
+}
+
 };

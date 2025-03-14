@@ -1,5 +1,5 @@
 export class Item {
- protected descricao: string;
+ private descricao: string;
  private quantidade: number;
 
  constructor(descricao: string, quantidade: number){
